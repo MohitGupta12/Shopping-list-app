@@ -9,6 +9,7 @@ const app = initializeApp(appSettings)
 const database = getDatabase(app)
 const shoppingListInDB = ref(database, "shoppingList")
 
+
 const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
 const shoppingListEl = document.getElementById("shopping-list")
@@ -22,10 +23,18 @@ addButtonEl.addEventListener("click", function () {
     clearInputBar();
 
     // Challenge: Refactor the line below into its own function.
-    appendElementToShoppingListEl(inputValue)
+    // appendElementToShoppingListEl(inputValue)
 })
 
+onValue(shoppingListInDB, function (snapshot) {
+    clearShoppingList()
+    let listArray = Object.values(snapshot.val())
 
+    for (let arrayItem of listArray) {
+        appendElementToShoppingListEl(arrayItem)
+        console.log(arrayItem)
+    }
+})
 
 
 
@@ -35,7 +44,9 @@ addButtonEl.addEventListener("click", function () {
 function clearInputBar() {
     inputFieldEl.value = ""
 }
-
+function clearShoppingList() {
+    shoppingListEl.innerHTML = ""
+}
 function appendElementToShoppingListEl(newElement) {
     shoppingListEl.innerHTML += `<li>${newElement}</li>`
 
