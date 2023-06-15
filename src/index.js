@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"
-import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"
 
 const appSettings = {
     databaseURL: "https://todo-list-8f14f-default-rtdb.asia-southeast1.firebasedatabase.app"
@@ -19,8 +19,27 @@ addButtonEl.addEventListener("click", function () {
     push(shoppingListInDB, inputValue)
 
     // Challenge: Refactor the line below into its own function.
-    inputFieldEl.value = ""
+    clearInputBar();
 
     // Challenge: Refactor the line below into its own function.
-    shoppingListEl.innerHTML += `<li>${inputValue}</li>`
+    appendElementToShoppingListEl(inputValue)
 })
+
+
+
+
+
+
+
+
+function clearInputBar() {
+    inputFieldEl.value = ""
+}
+
+function appendElementToShoppingListEl(newElement) {
+    shoppingListEl.innerHTML += `<li>${newElement}</li>`
+
+}
+
+
+
