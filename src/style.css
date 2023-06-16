@@ -4,6 +4,7 @@ body {
     padding: 0;
     font-family: 'Rubik', sans-serif;
     background-color: #f7f7f7;
+    user-select: none;
 }
 
 .container {
@@ -39,6 +40,16 @@ button {
     font-size: 20px;
     text-align: center;
     font-family: 'Rubik', sans-serif;
+}
+
+ul li:hover {
+    background-color: #FFECC7;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #432000;
+    cursor: pointer;
 }
 
 ul {
